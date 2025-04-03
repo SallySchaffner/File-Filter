@@ -9,8 +9,6 @@ using namespace std;
 // Utility to parse a CSV line respecting quoted fields with commas
 vector<string> parseCSVRow(const string& line) {
     vector<string> result;
-    stringstream ss(line);
-    string field;
     bool inQuotes = false;
     char c;
     string temp;
@@ -25,11 +23,12 @@ vector<string> parseCSVRow(const string& line) {
             temp.clear();
         }
         else { 
+            temp += c;
         }
     }
     result.push_back(temp); // last field
     return result;
-            temp += c;
+            
 }
 
 int main() {
@@ -48,6 +47,10 @@ int main() {
     unordered_map<string, int> columnIndex;
     for (int i = 0; i < headers.size(); ++i) {
         columnIndex[headers[i]] = i;
+    }
+    std::cout << "Using explicit iterator:\n";
+    for (auto it = columnIndex.begin(); it != columnIndex.end(); ++it) {
+        std::cout << it->first << ": " << it->second << std::endl;
     }
 
     // Columns to extract
