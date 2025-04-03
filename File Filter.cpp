@@ -24,12 +24,12 @@ vector<string> parseCSVRow(const string& line) {
             result.push_back(temp);
             temp.clear();
         }
-        else {
-            temp += c;
+        else { 
         }
     }
     result.push_back(temp); // last field
     return result;
+            temp += c;
 }
 
 int main() {
@@ -52,7 +52,7 @@ int main() {
 
     // Columns to extract
     vector<string> columnsToExtract = {
-        "Subject", "Catalog", "Section", "Units", "TotEnrl", "CapEnrl", "Instructor"
+        "Subject", "Catalog", "Section", "Component", "Session", "Units", "TotEnrl", "CapEnrl", "Instructor"
     };
 
     // Validate and collect indices
